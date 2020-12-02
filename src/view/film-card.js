@@ -1,8 +1,11 @@
+
+
+
 export const createFilmCardTemplate = (film) => {
   const {rating, year, duration, genre, poster, description, comments, title} = film;
 
-  description = (description.length >= 140) ?
-    description.substring(0, 139) + `(...)`
+  const descriptionPreview = (description.length >= 140) ?
+    `${description.substring(0, 140 - 1)} (...)`
     : description;
 
   return `<article class="film-card">
@@ -14,7 +17,7 @@ export const createFilmCardTemplate = (film) => {
       <span class="film-card__genre">${genre[0]}</span>
     </p>
     <img src="./images/posters/${poster}" alt="" class="film-card__poster">
-    <p class="film-card__description">${description}</p>
+    <p class="film-card__description">${descriptionPreview}</p>
     <a class="film-card__comments">${comments} comments</a>
     <div class="film-card__controls">
       <button class="film-card__controls-item button film-card__controls-item--add-to-watchlist film-card__controls-item--active" type="button">Add to watchlist</button>

@@ -2,6 +2,7 @@ import {generateStringFromArray} from "../mock/utilites.js";
 import dayjs from "dayjs";
 
 export const createFilmDetailsTemplate = (film) => {
+  console.log(film)
   const {rating, year, duration, genre, poster, description, comments, title, director, writers, actors, release, country, ageRating} = film;
 
   const releaseDate = dayjs(release).format(`DD MMMM`) + ` ` + year;
