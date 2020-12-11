@@ -59,12 +59,6 @@ if (films.length > FILMS_ON_PAGE_COUNT) {
 
     films.slice(renderedFilmsCards, renderedFilmsCards + FILMS_ON_PAGE_COUNT)
       .forEach((film) => render(filmsListElement, createFilmCardTemplate(film), `beforeend`));
-
-    renderedFilmsCards += FILMS_ON_PAGE_COUNT;
-
-    if (renderedFilmsCards >= films.length) {
-      createMoreButton.remove();
-    }
   });
 }
 
@@ -76,4 +70,3 @@ popupElement.classList.add(`visually-hidden`);
 for (let i = 0; i < comments.length; i++) {
   render(CommentsList, createCommentTemplate(comments[i]), `afterend`);
 }
-
