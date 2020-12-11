@@ -1,6 +1,6 @@
+import {FILMS_IN_LIST_TOTAL_COUNT} from '../consts.js';
 
 export const createFilmsStatisticTemplate = () => {
-  const totalFilmsCount = 20;
 
-  return `<p>${totalFilmsCount} movies inside</p>`;
+  return `<p>${FILMS_IN_LIST_TOTAL_COUNT} movies inside</p>`;
 };

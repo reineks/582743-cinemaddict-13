@@ -1,17 +1,8 @@
 import {getRandomInteger} from './utilites.js';
-import {generateRandomCount} from './utilites.js';
+import {generateRandomItem} from './utilites.js';
 import {generateRandomArray} from './utilites.js';
+// import {TOTAL_COMMENTS_COUNT} from '../consts.js';
 import dayjs from "dayjs";
-
-const posters = [
-  `made-for-each-other.png`,
-  `popeye-meets-sinbad.png`,
-  `sagebrush-trail.jpg`,
-  `santa-claus-conquers-the-martians.jpg`,
-  `the-dance-of-life.jpg`,
-  `the-great-flamarion.jpg`,
-  `the-man-with-the-golden-arm.jpg`
-];
 
 const titles = [
   `Made for each other`,
@@ -66,15 +57,29 @@ const countries = [
   `Italy`,
 ];
 
-export const genres = [
-  `comedy`,
-  `drama`,
-  `triller`,
-  `horror`,
-  `western`,
-  `sci-fi`,
-  `fantasy`,
-  `film-noir`,
+const genres = [
+  `Comedy`,
+  `Drama`,
+  `Triller`,
+  `Horror`,
+  `Western`,
+  `Sci-Fi`,
+  `Fantasy`,
+  `Film-Noir`,
+];
+
+const postersLinks = [
+  `made-for-each-other.png`,
+  `sagebrush-trail.jpg`,
+  `popeye-meets-sinbad.png`,
+  `santa-claus-conquers-the-martians.jpg`,
+  `the-dance-of-life.jpg`,
+  `the-great-flamarion.jpg`,
+  `the-man-with-the-golden-arm.jpg`
+];
+
+const textComments = [`
+  Interesting setting and a good cast`, `Booooooooooring`, `Very very old. Meh`, `Almost two hours? Seriously?`
 ];
 
 const descriptionFilmTemplate = `Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -96,37 +101,48 @@ const generateDateReleaseFilm = () => {
   return dayjs().add(daysGap, `day`).toDate();
 };
 
+const shortDescription = (description) => {
+  return description.length > 140
+    ? `${description.slice(0, 140 - 1)}...`
+    : description;
+};
+
 const generateFilmDescription = () => {
   const sentencesCount = getRandomInteger(1, 5);
   const sentences = descriptionFilmTemplate.split(`.`);
   let randomFilmDescription = ``;
 
   for (let i = 0; i < sentencesCount; i++) {
-    randomFilmDescription += generateRandomCount(sentences) + `. `;
+    randomFilmDescription += generateRandomItem(sentences) + `. `;
   }
 
   return randomFilmDescription;
 };
 
 export const generateFilmCard = () => {
-  const title = generateRandomCount(titles);
+  const title = generateRandomItem(titles);
   const year = getRandomInteger(1929, 2020);
+  const description = generateFilmDescription();
 
   return {
-    poster: `/images/posters/` + generateRandomCount(posters),
+    poster: generateRandomItem(postersLinks),
     rating: (Math.random() * 10).toFixed(1),
     title,
-    ageRating: generateRandomCount(ageRatings),
+    ageRating: generateRandomItem(ageRatings),
     originTitle: title,
     director: generateRandomArray(directors, 1),
-    writers: generateRandomArray(writers),
-    actors: generateRandomArray(actors),
+    writers: generateRandomArray(writers, 5),
+    actors: generateRandomArray(actors, 5),
     year,
     release: generateDateReleaseFilm(),
-    runtime: getRandomInteger(0, 5) + `h ` + getRandomInteger(0, 59) + `m`,
-    country: generateRandomCount(countries, 1),
-    genre: generateRandomArray(genres),
-    description: generateFilmDescription(),
-    comments: getRandomInteger(0, 5),
+    runtime: getRandomInteger(1, 5) + `h ` + getRandomInteger(0, 59) + `m`,
+    country: generateRandomArray(countries, 1),
+    genres: generateRandomArray(genres, 5),
+    description,
+    descriptionPreview: shortDescription(description),
+    comments: generateRandomArray(textComments, 5),
+    isWatchlist: Boolean(getRandomInteger(0, 1)),
+    isWatched: Boolean(getRandomInteger(0, 1)),
+    isFavourite: Boolean(getRandomInteger(0, 1))
   };
 };

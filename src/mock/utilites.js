@@ -10,7 +10,7 @@ export const getRandomInteger = (a = 0, b = 1) => {
   return Math.floor(lower + Math.random() * (upper - lower + 1));
 };
 
-export const generateRandomCount = (array) => {
+export const generateRandomItem = (array) => {
   const generateIndex = getRandomInteger(0, array.length - 1);
   return array[generateIndex];
 };
@@ -20,7 +20,7 @@ export const generateRandomArray = (array, maxIndex) => {
   let randomArray = [];
 
   for (let i = 0; i < lengthArray; i++) {
-    randomArray.push(generateRandomCount(array));
+    randomArray.push(generateRandomItem(array));
   }
 
   return randomArray;
@@ -35,3 +35,5 @@ export const generateStringFromArray = (array, separator) => {
 
   return stringValue;
 };
+
+export const isPropertyActive = (property) => property ? `film-card__controls-item--active` : ``;

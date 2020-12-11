@@ -1,17 +1,24 @@
-import {generateStringFromArray} from "../mock/utilites.js";
+
 import dayjs from "dayjs";
 
 export const createFilmDetailsTemplate = (film) => {
-  const {rating, year, duration, genre, poster, description, comments, title, director, writers, actors, release, country, ageRating} = film;
+  const {rating, year, runtime, genres, poster, description, comments, title, director, writers, actors, release, country, ageRating} = film;
 
   const releaseDate = dayjs(release).format(`DD MMMM`) + ` ` + year;
 
+  const screenwriters = writers.map((writer) => {
+    return `${writer}`;
+  }).join(`, `);
 
-  const producers = generateStringFromArray(director, `, `);
-  const screenwriters = generateStringFromArray(writers, `, `);
-  const actor = generateStringFromArray(actors, `, `);
+  const actorsList = actors.map((actor) => {
+    return `${actor}`;
+  }).join(`, `);
 
-  const genreTitle = (genre.length > 1) ? `Genres` : `Genre`;
+  const genreList = genres.map((genre) => {
+    return `${genre}`;
+  }).join(`, `);
+
+  const genreTitle = (genres.length > 1) ? `Genres` : `Genre`;
 
   return `<section class="film-details">
     <form class="film-details__inner" action="" method="get">
@@ -41,7 +48,7 @@ export const createFilmDetailsTemplate = (film) => {
           <table class="film-details__table">
             <tr class="film-details__row">
               <td class="film-details__term">Director</td>
-              <td class="film-details__cell">${producers}</td>
+              <td class="film-details__cell">${director}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Writers</td>
@@ -49,7 +56,7 @@ export const createFilmDetailsTemplate = (film) => {
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Actors</td>
-              <td class="film-details__cell">${actor}</td>
+              <td class="film-details__cell">${actorsList}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Release Date</td>
@@ -57,7 +64,7 @@ export const createFilmDetailsTemplate = (film) => {
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Runtime</td>
-              <td class="film-details__cell">${duration}</td>
+              <td class="film-details__cell">${runtime}</td>
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">Country</td>
@@ -65,7 +72,7 @@ export const createFilmDetailsTemplate = (film) => {
             </tr>
             <tr class="film-details__row">
               <td class="film-details__term">${genreTitle}</td>
-              <td class="film-details__cell">${genre}</span></td>
+              <td class="film-details__cell">${genreList}</span></td>
             </tr>
           </table>
 
@@ -87,8 +94,7 @@ export const createFilmDetailsTemplate = (film) => {
 
     <div class="film-details__bottom-container">
       <section class="film-details__comments-wrap">
-        <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${comments}</span></h3>
-
+        <h3 class="film-details__comments-title">Comments <span class="film-details__comments-count">${comments.length}</span></h3>
         <ul class="film-details__comments-list"></ul>
 
         <div class="film-details__new-comment">

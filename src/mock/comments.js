@@ -1,14 +1,18 @@
 import {getRandomInteger} from './utilites.js';
-import {generateRandomCount} from './utilites.js';
+import {generateRandomItem} from './utilites.js';
 import dayjs from "dayjs";
 
 
-const generateAuthor = [
+const authors = [
   `John Cromwell`, `Armand Schaefer`, `Nicholas Webster`, `Dave Fleischer`, `Otto Ludwig Preminger`
 ];
 
-const generateEmoji = [
+const emoji = [
   `smile`, `sleeping`, `puke`, `angry`
+];
+
+const textComments = [`
+  Interesting setting and a good cast`, `Booooooooooring`, `Very very old. Meh`, `Almost two hours? Seriously?`
 ];
 
 const generateDate = () => {
@@ -20,9 +24,9 @@ const generateDate = () => {
 
 export const generateComment = () => {
   return {
-    message: `my comment`,
-    emoji: generateRandomCount(generateEmoji),
-    author: generateRandomCount(generateAuthor),
+    message: generateRandomItem(textComments, 4),
+    emoji: generateRandomItem(emoji, 1),
+    author: generateRandomItem(authors, 1),
     date: generateDate(),
   };
 };
