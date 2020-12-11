@@ -9,6 +9,7 @@ import {createShowMoreButtonTemplate} from "./view/show-more-button.js";
 import {createSortTemplate} from "./view/sort.js";
 import {createCommentTemplate} from "./view/comments-list.js";
 // import {createEmptyFilmsTemplate} from "./view/empty-films-list.js";
+// import {createStatisticsTemplate} from "./view/user-statistic.js";
 import {generateComment} from "./mock/comments.js";
 import {generateFilmCard} from "./mock/films-card.js";
 import {generateFilter} from "./mock/filters.js";
