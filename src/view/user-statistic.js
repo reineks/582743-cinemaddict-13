@@ -1,4 +1,6 @@
-export const createStatisticsTemplate = () => {
+import {createElement} from '../mock/utilites.js';
+
+const createUserStatisticsTemplate = () => {
 
   return `<section class="statistic">
     <p class="statistic__rank">
@@ -39,3 +41,25 @@ export const createStatisticsTemplate = () => {
     </div>
   </section>`;
 };
+
+export default class UserStatistics {
+  constructor() {
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createUserStatisticsTemplate();
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

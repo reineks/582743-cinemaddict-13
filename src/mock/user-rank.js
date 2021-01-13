@@ -1,5 +1,5 @@
 
-export const createUserRank = (rank) => {
+export const getRankLabel = (rank) => {
 
   if (rank <= 10) {
     return `Novice`;

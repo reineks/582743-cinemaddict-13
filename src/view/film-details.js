@@ -1,6 +1,7 @@
+import {createElement} from "../mock/utilites.js";
 import dayjs from "dayjs";
 
-export const createFilmDetailsTemplate = (film) => {
+const createFilmDetailsTemplate = (film) => {
   const {rating, year, runtime, genres, poster, description, comments, title, director, writers, actors, release, country, ageRating} = film;
 
   const releaseDate = dayjs(release).format(`DD MMMM`) + ` ` + year;
@@ -130,3 +131,26 @@ export const createFilmDetailsTemplate = (film) => {
     </form>
   </section>`;
 };
+
+export default class FilmCardDetails {
+  constructor(film) {
+    this._film = film;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmDetailsTemplate(this._film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}

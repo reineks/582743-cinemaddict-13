@@ -4,8 +4,7 @@
   "private": true,
   "description": "Проект «Киноман» от HTML Academy",
   "scripts": {
-    "eslint": "eslint src/**/*.js",
-    "eslint-main": "eslint src/main.js",
+    "eslint": "eslint /src/**/*.js",
     "test": "npm run eslint",
     "build": "webpack --mode development",
     "start": "webpack-dev-server --open"
@@ -20,7 +19,7 @@
     "webpack-dev-server": "3.11.0"
   },
   "engines": {
-    "node": "10"
+    "node": "14"
   },
   "dependencies": {
     "chart.js": "2.9.4",

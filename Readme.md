@@ -1,7 +1,7 @@
 # Проект «Киноман» [![Build status][travis-image]][travis-url]
 
 * Студент: [Max Bubnov](https://up.htmlacademy.ru/ecmascript/13/user/582743).
-* Наставник: [Михаил Пушков] (https://up.htmlacademy.ru/ecmascript/13/user/638545).
+* Наставник: [Михаил Пушков](https://up.htmlacademy.ru/ecmascript/13/user/638545).
 
 ---
 

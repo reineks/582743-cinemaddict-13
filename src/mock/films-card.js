@@ -1,7 +1,6 @@
 import {getRandomInteger} from './utilites.js';
 import {generateRandomItem} from './utilites.js';
 import {generateRandomArray} from './utilites.js';
-// import {TOTAL_COMMENTS_COUNT} from '../consts.js';
 import dayjs from "dayjs";
 
 const titles = [

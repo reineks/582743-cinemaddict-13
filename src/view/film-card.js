@@ -1,6 +1,6 @@
-import {isPropertyActive} from "../mock/utilites.js";
+import {isPropertyActive, createElement} from "../mock/utilites.js";
 
-export const createFilmCardTemplate = (film) => {
+const createFilmCardTemplate = (film) => {
   const {rating, year, runtime, descriptionPreview, genres, poster, comments, title, isWatchlist, isWatched, isFavourite} = film;
 
   return `<article class="film-card">
@@ -21,3 +21,26 @@ export const createFilmCardTemplate = (film) => {
     </div>
   </article>`;
 };
+
+export default class FilmCard {
+  constructor(film) {
+    this.film = film;
+    this._element = null;
+  }
+
+  getTemplate() {
+    return createFilmCardTemplate(this.film);
+  }
+
+  getElement() {
+    if (!this._element) {
+      this._element = createElement(this.getTemplate());
+    }
+
+    return this._element;
+  }
+
+  removeElement() {
+    this._element = null;
+  }
+}
