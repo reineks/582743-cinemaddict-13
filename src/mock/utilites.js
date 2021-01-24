@@ -50,5 +50,16 @@ export const generateRandomArray = (array, maxIndex) => {
   return randomArray;
 };
 
+export const getRankLabel = (rank) => {
+
+  if (rank <= 10) {
+    return `Novice`;
+  } else if (rank <= 20) {
+    return `Fan`;
+  } else {
+    return `Movie Buff`;
+  }
+};
+
 export const isPropertyActive = (property) => property ? `film-card__controls-item--active` : ``;
 export const isItemActive = (property) => property ? `main-navigation__item--active` : ``;

@@ -1,9 +1,3 @@
-// const filmsBy = films.reduce((obj, film) => {
-//   obj[film.isWatchlist, film.isWatched, film.isFavourite];
-//   return obj;
-// }, {});
-
-// console.log(result);
 
 const filmsByCategories = {
   Watchlist: (films) => films.filter((film) => film.isWatchlist).length,
